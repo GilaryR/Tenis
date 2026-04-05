@@ -5,48 +5,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase que representa un objeto de transferencia de datos (DTO)
- * para la información de un equipo dentro del juego.
+ * Clase que representa los datos de un equipo dentro del juego.
  * 
- * Esta clase se utiliza para enviar o almacenar la información
- * básica de un equipo sin modificar directamente el objeto original.
+ * Se utiliza como un objeto de transferencia de datos (DTO)
+ * para enviar información de un equipo sin exponer directamente
+ * los objetos originales del sistema.
  * 
  * Contiene:
  * - Identificador del equipo
  * - Nombre del equipo
- * - Lista de jugadores del equipo
- * 
- * Para evitar modificar los datos originales, esta clase crea
- * copias de los jugadores cuando se almacenan o se devuelven.
- * 
- * Implementa Serializable para permitir que los datos del equipo
- * puedan enviarse a través de red o almacenarse en archivos.
+ * - Lista de jugadores
  */
 public class DatosEquipo implements Serializable {
 
     /** Identificador de versión para serialización */
     private static final long serialVersionUID = 1L;
 
-    /** Identificador del equipo (por ejemplo EQUIPO1 o EQUIPO2) */
+    /** Identificador único del equipo */
     private final String idEquipo;
 
     /** Nombre del equipo */
     private final String nombreEquipo;
 
-    /** Lista de jugadores pertenecientes al equipo */
+    /** Lista de jugadores del equipo */
     private final List<Jugador> jugadores;
 
     /**
-     * Constructor que crea un objeto de datos del equipo.
+     * Constructor de la clase DatosEquipo.
      * 
-     * Se realiza una copia de cada jugador para evitar modificar
-     * directamente los objetos originales del equipo.
+     * Se realiza una copia de cada jugador para evitar
+     * modificar los objetos originales.
      * 
      * @param idEquipo identificador del equipo
      * @param nombreEquipo nombre del equipo
-     * @param jugadores lista de jugadores del equipo
+     * @param jugadores lista de jugadores
      */
     public DatosEquipo(String idEquipo, String nombreEquipo, List<Jugador> jugadores) {
+
         this.idEquipo = idEquipo;
         this.nombreEquipo = nombreEquipo;
         this.jugadores = new ArrayList<>();
@@ -77,10 +72,10 @@ public class DatosEquipo implements Serializable {
     /**
      * Obtiene la lista de jugadores del equipo.
      * 
-     * Se devuelve una copia de los jugadores para evitar
-     * modificaciones externas sobre los datos originales.
+     * Devuelve una copia de los jugadores para evitar
+     * modificaciones externas.
      * 
-     * @return copia de la lista de jugadores
+     * @return lista de jugadores
      */
     public List<Jugador> getJugadores() {
 
