@@ -27,10 +27,11 @@ public final class TextosPartida {
      * @return String con las reglas
      */
     public static String reglas() {
-        return "1. El centro solo muestra la malla y el paso de la pelota.\n"
-                + "2. Si la pelota toca la malla, el punto es para el rival.\n"
-                + "3. Se gana con 10 puntos y diferencia minima de 2.\n"
-                + "4. Si el tiempo termina empatado, se juega punto de oro.";
+        return "1. Si la pelota toca la malla, el punto es para el rival.\n"
+                + "2. Se gana el juego al alcanzar 10 puntos con una diferencia mínima de 2.\n"
+                + "3. Si el tiempo termina en empate, se juega un punto de oro.\n"
+                + "4. Cada equipo debe evitar que la pelota caiga en su lado de la cancha."
+                + "5. El saque inicial se asigna aleatoriamente.";
     }
 
     /**
