@@ -37,7 +37,7 @@ import java.util.TimerTask;
 
 /**
  * Pantalla del servidor central.
- * 
+ *   * @author Aleja
  * Representa la vista principal del juego desde el lado del servidor:
  * - Muestra la malla (red central)
  * - Muestra el estado de ambos equipos
