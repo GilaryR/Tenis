@@ -1,43 +1,23 @@
 package tenis.juego.modelo;
 
 /**
- * Enumeración que representa los diferentes estados en los que puede
- * encontrarse el juego de tenis durante su ejecución.
+ * Enumeración que representa los diferentes estados del juego.
  * 
- * Cada estado describe una fase específica del partido, permitiendo
- * controlar el flujo del juego y las acciones que se pueden realizar
- * en cada momento.
- * 
- * Los estados posibles son:
- * 
- * - ESPERANDO_EQUIPOS: El juego está esperando que los equipos
- *   configuren sus jugadores y estén listos.
- * 
- * - LISTO_PARA_INICIAR: Ambos equipos ya están configurados y
- *   el partido puede comenzar.
- * 
- * - JUGANDO: El partido está en curso y la pelota está en movimiento.
- * 
- * - PUNTO_DE_ORO: Se activa cuando el tiempo termina y hay empate.
- *   El siguiente punto decide el ganador.
- * 
- * - TERMINADO: El partido ha finalizado y ya existe un ganador.
- * 
- * Cada estado contiene una descripción que puede mostrarse
- * en la interfaz del juego.
+ * Permite controlar en qué fase se encuentra el partido
+ * y qué acciones pueden realizarse en cada momento.
  */
 public enum EstadoJuego {
 
-    /** Estado en el que el sistema espera la configuración de los equipos */
+    /** El sistema espera que los equipos se configuren */
     ESPERANDO_EQUIPOS("Esperando configuracion de equipos"),
 
-    /** Ambos equipos están listos y el partido puede iniciar */
+    /** Ambos equipos están listos para iniciar el partido */
     LISTO_PARA_INICIAR("Listo para iniciar"),
 
     /** El partido se encuentra en desarrollo */
     JUGANDO("Partido en juego"),
 
-    /** Estado especial donde el siguiente punto define al ganador */
+    /** Estado especial donde el siguiente punto decide el ganador */
     PUNTO_DE_ORO("Punto de oro"),
 
     /** El partido ha terminado */
@@ -58,19 +38,14 @@ public enum EstadoJuego {
     /**
      * Obtiene la descripción del estado.
      * 
-     * @return descripción del estado del juego
+     * @return descripción del estado
      */
     public String getDescripcion() {
         return descripcion;
     }
 
     /**
-     * Devuelve la descripción del estado como representación en texto.
-     * 
-     * Este método se usa cuando se imprime el estado directamente,
-     * por ejemplo en interfaces gráficas o mensajes del sistema.
-     * 
-     * @return descripción del estado
+     * Devuelve la representación en texto del estado.
      */
     @Override
     public String toString() {

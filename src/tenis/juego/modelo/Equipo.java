@@ -7,46 +7,49 @@ import java.util.List;
 /**
  * Representa un equipo dentro del juego de tenis.
  * 
- * Esta clase se encarga de administrar:
- * - El nombre del equipo
- * - El puntaje obtenido durante el partido
- * - Los jugadores que pertenecen al equipo
- * - El estado de preparación del equipo (si está listo para jugar)
- * - El avatar representativo del equipo
+ * Un equipo está compuesto por uno o más jugadores y contiene
+ * información relacionada con el desarrollo del partido como:
  * 
- * Además proporciona métodos para:
- * - Agregar o eliminar jugadores
- * - Obtener jugadores según su zona en la cancha
- * - Reiniciar o aumentar el puntaje
- * - Sincronizar los datos del equipo con otro equipo
+ * - Nombre del equipo
+ * - Puntaje obtenido
+ * - Lista de jugadores
+ * - Estado de preparación del equipo
+ * - Avatar o representación visual del equipo
  * 
- * Implementa Serializable para permitir guardar o transmitir
- * el estado del equipo en aplicaciones cliente-servidor.
+ * Esta clase permite gestionar los jugadores del equipo,
+ * actualizar la información desde otro equipo y controlar
+ * el puntaje durante el juego.
+ * 
+ * Implementa Serializable para permitir que los datos del
+ * equipo puedan enviarse por red o almacenarse en archivos.
  */
 public class Equipo implements Serializable {
 
-    /** Identificador de versión para serialización */
+    /**
+     * Identificador de versión para serialización.
+     */
     private static final long serialVersionUID = 1L;
 
     /** Nombre del equipo */
     private String nombre;
 
-    /** Puntaje actual del equipo durante el partido */
+    /** Puntaje actual del equipo */
     private int puntaje;
 
     /** Lista de jugadores que pertenecen al equipo */
     private final List<Jugador> jugadores;
 
-    /** Indica si el equipo está listo para iniciar el partido */
+    /** Indica si el equipo está listo para comenzar el juego */
     private boolean listo;
 
     /** Avatar o imagen representativa del equipo */
     private String avatarEquipo;
 
     /**
-     * Constructor que crea un equipo con un nombre específico.
+     * Constructor de la clase Equipo.
      * 
-     * Inicializa la lista de jugadores y deja el avatar vacío.
+     * Inicializa el equipo con un nombre y crea una lista vacía
+     * de jugadores.
      * 
      * @param nombre nombre del equipo
      */
@@ -57,19 +60,12 @@ public class Equipo implements Serializable {
     }
 
     /**
-     * Sincroniza los datos de este equipo con otro equipo.
+     * Actualiza la información del equipo a partir de otro equipo.
      * 
-     * Copia:
-     * - nombre
-     * - puntaje
-     * - estado de listo
-     * - avatar
-     * - lista de jugadores
+     * Este método copia los datos del equipo origen para sincronizar
+     * el estado del equipo actual.
      * 
-     * Se usa normalmente en aplicaciones cliente-servidor
-     * para mantener el estado actualizado.
-     * 
-     * @param origen equipo desde el cual se copiarán los datos
+     * @param origen equipo del cual se copiarán los datos
      */
     public void actualizarDesde(Equipo origen) {
         nombre = origen.nombre;
@@ -94,7 +90,7 @@ public class Equipo implements Serializable {
     }
 
     /**
-     * Establece el nombre del equipo.
+     * Modifica el nombre del equipo.
      * 
      * @param nombre nuevo nombre del equipo
      */
@@ -130,7 +126,7 @@ public class Equipo implements Serializable {
     }
 
     /**
-     * Indica si el equipo está listo para iniciar el juego.
+     * Indica si el equipo está listo para jugar.
      * 
      * @return true si el equipo está listo
      */
@@ -141,7 +137,7 @@ public class Equipo implements Serializable {
     /**
      * Cambia el estado de preparación del equipo.
      * 
-     * @param listo true si el equipo está listo
+     * @param listo estado de preparación
      */
     public void setListo(boolean listo) {
         this.listo = listo;
@@ -157,9 +153,9 @@ public class Equipo implements Serializable {
     }
 
     /**
-     * Establece el avatar del equipo.
+     * Modifica el avatar del equipo.
      * 
-     * @param avatarEquipo ruta o nombre del avatar
+     * @param avatarEquipo nuevo avatar
      */
     public void setAvatarEquipo(String avatarEquipo) {
         this.avatarEquipo = avatarEquipo;
@@ -182,7 +178,7 @@ public class Equipo implements Serializable {
     /**
      * Agrega un jugador al equipo.
      * 
-     * @param jugador jugador que se agregará al equipo
+     * @param jugador jugador a agregar
      */
     public void agregarJugador(Jugador jugador) {
         jugadores.add(jugador);
@@ -196,9 +192,9 @@ public class Equipo implements Serializable {
     }
 
     /**
-     * Busca un jugador según la zona que ocupa en la cancha.
+     * Busca un jugador que se encuentre en una zona específica.
      * 
-     * @param zona zona donde se encuentra el jugador
+     * @param zona zona del campo
      * @return jugador encontrado o null si no existe
      */
     public Jugador obtenerJugadorEnZona(int zona) {
@@ -211,7 +207,7 @@ public class Equipo implements Serializable {
     }
 
     /**
-     * Obtiene la cantidad total de jugadores del equipo.
+     * Obtiene la cantidad de jugadores del equipo.
      * 
      * @return número de jugadores
      */

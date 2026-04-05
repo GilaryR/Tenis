@@ -3,54 +3,55 @@ package tenis.juego.modelo;
 import java.io.Serializable;
 
 /**
- * Representa un jugador dentro de un equipo en el juego de tenis.
+ * Representa un jugador dentro del juego de tenis.
  * 
- * Esta clase administra:
- * - El nombre del jugador
- * - El avatar o representación visual
- * - La zona que ocupa en la cancha
- * - La posición del jugador dentro del campo (coordenadas X y Y)
- * - El tipo de control utilizado para mover al jugador
+ * Cada jugador pertenece a un equipo y tiene una posición dentro del campo
+ * de juego. También contiene información visual como el avatar y define
+ * el tipo de control que utilizará el jugador (mouse o teclado).
  * 
- * Los jugadores pueden moverse en la cancha mediante métodos
- * que modifican su posición en los ejes X y Y.
+ * La posición del jugador se maneja mediante coordenadas (x, y)
+ * que representan su ubicación dentro del campo de juego.
  * 
- * Implementa Serializable para permitir guardar o transmitir
- * el estado del jugador en aplicaciones cliente-servidor.
+ * Esta clase implementa Serializable para permitir que los datos
+ * del jugador puedan enviarse a través de red o guardarse en archivos.
  */
 public class Jugador implements Serializable {
 
-    /** Identificador de versión para serialización */
+    /**
+     * Identificador de versión para serialización.
+     */
     private static final long serialVersionUID = 1L;
 
     /** Nombre del jugador */
     private String nombre;
 
-    /** Avatar o imagen representativa del jugador */
+    /** Avatar o imagen que representa al jugador */
     private String avatar;
 
-    /** Zona del jugador dentro del equipo (posición en la cancha) */
+    /** Zona del campo donde juega (1 o 2) */
     private int zona;
 
-    /** Posición horizontal del jugador */
+    /** Posición horizontal del jugador en el campo */
     private int x;
 
-    /** Posición vertical del jugador */
+    /** Posición vertical del jugador en el campo */
     private int y;
 
-    /** Tipo de control usado para mover al jugador (mouse o teclado) */
+    /** Tipo de control que utiliza el jugador */
     private final String tipoControl;
 
     /**
-     * Constructor que crea un jugador con nombre, avatar y zona.
+     * Constructor de la clase Jugador.
      * 
-     * Dependiendo de la zona se asigna automáticamente el tipo de control:
-     * - Zona 1 → Control con MOUSE
-     * - Zona 2 → Control con TECLADO
+     * Inicializa un jugador con su nombre, avatar y zona dentro del campo.
+     * Dependiendo de la zona, se define automáticamente el tipo de control:
+     * 
+     * Zona 1 → Control con mouse  
+     * Zona 2 → Control con teclado
      * 
      * @param nombre nombre del jugador
-     * @param avatar avatar del jugador
-     * @param zona zona del jugador en la cancha
+     * @param avatar avatar o imagen del jugador
+     * @param zona zona del campo donde jugará
      */
     public Jugador(String nombre, String avatar, int zona) {
         this.nombre = nombre;
@@ -62,10 +63,11 @@ public class Jugador implements Serializable {
     /**
      * Crea una copia del jugador actual.
      * 
-     * Este método se utiliza para duplicar el estado del jugador,
-     * por ejemplo cuando se sincronizan datos entre cliente y servidor.
+     * Este método se utiliza para evitar modificar directamente
+     * el objeto original cuando se necesita enviar o compartir
+     * la información del jugador.
      * 
-     * @return nueva instancia de Jugador con los mismos datos
+     * @return copia del jugador
      */
     public Jugador copiar() {
         Jugador copia = new Jugador(nombre, avatar, zona);
@@ -84,9 +86,9 @@ public class Jugador implements Serializable {
     }
 
     /**
-     * Establece el nombre del jugador.
+     * Modifica el nombre del jugador.
      * 
-     * @param nombre nuevo nombre del jugador
+     * @param nombre nuevo nombre
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -95,23 +97,23 @@ public class Jugador implements Serializable {
     /**
      * Obtiene el avatar del jugador.
      * 
-     * @return avatar del jugador
+     * @return avatar
      */
     public String getAvatar() {
         return avatar;
     }
 
     /**
-     * Establece el avatar del jugador.
+     * Modifica el avatar del jugador.
      * 
-     * @param avatar nuevo avatar del jugador
+     * @param avatar nuevo avatar
      */
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
     /**
-     * Obtiene la zona que ocupa el jugador en la cancha.
+     * Obtiene la zona del jugador dentro del campo.
      * 
      * @return zona del jugador
      */
@@ -131,7 +133,7 @@ public class Jugador implements Serializable {
     /**
      * Establece la posición horizontal del jugador.
      * 
-     * @param x nueva posición en el eje X
+     * @param x nueva coordenada X
      */
     public void setX(int x) {
         this.x = x;
@@ -149,7 +151,7 @@ public class Jugador implements Serializable {
     /**
      * Establece la posición vertical del jugador.
      * 
-     * @param y nueva posición en el eje Y
+     * @param y nueva coordenada Y
      */
     public void setY(int y) {
         this.y = y;
@@ -165,36 +167,36 @@ public class Jugador implements Serializable {
     }
 
     /**
-     * Mueve al jugador hacia arriba en la cancha.
+     * Mueve el jugador hacia arriba.
      * 
-     * @param cantidad número de unidades que se moverá
+     * @param cantidad cantidad de movimiento
      */
     public void moverArriba(int cantidad) {
         y -= cantidad;
     }
 
     /**
-     * Mueve al jugador hacia abajo en la cancha.
+     * Mueve el jugador hacia abajo.
      * 
-     * @param cantidad número de unidades que se moverá
+     * @param cantidad cantidad de movimiento
      */
     public void moverAbajo(int cantidad) {
         y += cantidad;
     }
 
     /**
-     * Mueve al jugador hacia la izquierda.
+     * Mueve el jugador hacia la izquierda.
      * 
-     * @param cantidad número de unidades que se moverá
+     * @param cantidad cantidad de movimiento
      */
     public void moverIzquierda(int cantidad) {
         x -= cantidad;
     }
 
     /**
-     * Mueve al jugador hacia la derecha.
+     * Mueve el jugador hacia la derecha.
      * 
-     * @param cantidad número de unidades que se moverá
+     * @param cantidad cantidad de movimiento
      */
     public void moverDerecha(int cantidad) {
         x += cantidad;
