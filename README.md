@@ -1,9 +1,7 @@
-🎾 Tenis Multijugador (UDP P2P)
+🎾 Tenis Multijugador (UDP)
 
 Descripción del juego
-Tenis Multijugador es un videojuego desarrollado en Java que simula un partido de tenis entre dos equipos en tiempo real. Cada jugador controla su lado de la cancha, interactuando con la pelota mediante movimientos y acciones sincronizadas a través de una red.
-
-El juego utiliza comunicación UDP y arquitectura Peer-to-Peer (P2P), permitiendo que los clientes se comuniquen directamente sin necesidad de un servidor central.
+Tenis Multijugador es un videojuego desarrollado en Java que simula un partido de tenis entre dos equipos en tiempo real. Cada jugador controla su lado de la cancha, interactuando con la pelota mediante movimientos y acciones sincronizadas a través de una red.El juego utiliza comunicación UDP.
 
 
 🔗 Enlace código fuente
@@ -150,10 +148,13 @@ Los controladores dependen de abstracciones, no de implementaciones concretas.
 ⚠️ Dificultades y soluciones
 ❌ Problema: Pérdida de paquetes (UDP)
 Solución: manejo de estados y sincronización frecuente.
+
 ❌ Problema: Desincronización entre clientes
 Solución: envío constante del estado del juego.
+
 ❌ Problema: Complejidad en comunicación P2P
 Solución: separación clara en clases de comunicación (EmisorUDP, ReceptorUDP).
+
 ❌ Problema: Organización del código
 Solución: uso de arquitectura por capas y principios SOLID.
 
